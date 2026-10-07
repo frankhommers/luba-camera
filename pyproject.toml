@@ -1,0 +1,32 @@
+[project]
+name = "luba-camera"
+version = "0.1.0"
+description = "Browser-free Mammotion camera snapshots through Home Assistant WebRTC"
+requires-python = ">=3.12"
+dependencies = [
+  "aiohttp>=3.11,<4",
+  "aiortc==1.15.0",
+  "Pillow>=11,<13",
+  "python-dotenv>=1.1,<2",
+]
+
+[project.scripts]
+luba-camera = "luba_camera.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "pytest-asyncio>=1,<2", "ruff>=0.14,<1"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
